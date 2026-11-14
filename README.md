@@ -8,15 +8,15 @@ A minimal, production-ready remote [MCP](https://modelcontextprotocol.io) server
 - Optional bearer-token auth via one environment variable
 - Tests for the tools and the HTTP endpoint (initialize, `tools/list`, `tools/call`, auth)
 
-Live demo: __LIVE_URL__ (endpoint `__LIVE_URL__/mcp`, no auth)
+Live demo: https://mcp-runzero-mcp-starter-d15c5da5.run-zero.app (endpoint `https://mcp-runzero-mcp-starter-d15c5da5.run-zero.app/mcp`, no auth)
 
 ## Deploy on run.zero
 
-**One click.** Open __ADOPT_URL__, sign in, and run.zero copies this template into a new app of yours, with its own repository, build and URL.
+**One click.** Open https://dashboard.run-zero.de/?template=runzero-mcp-starter-d15c5da5, sign in, and run.zero copies this template into a new app of yours, with its own repository, build and URL.
 
 **With your coding agent.** If your agent has the [run.zero MCP server](https://github.com/getitdone-gmbh/run-zero-mcp) connected, ask it:
 
-> Create a new app from the run.zero template `__SLUG__` and call it my-mcp-server.
+> Create a new app from the run.zero template `runzero-mcp-starter-d15c5da5` and call it my-mcp-server.
 
 It calls `runzero_adopt_template` and waits for the build.
 

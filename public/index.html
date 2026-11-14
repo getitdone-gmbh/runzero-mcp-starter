@@ -62,7 +62,7 @@
       border-radius: var(--radius);
       padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
     }
-    .field code { flex: 1; overflow-x: auto; white-space: nowrap; }
+    .field code { flex: 1; min-width: 0; overflow-wrap: anywhere; }
     button {
       font: inherit;
       font-size: 14px;
@@ -83,7 +83,8 @@
       background: var(--surface-container);
       border: 1px solid var(--outline);
       border-radius: var(--radius);
-      overflow-x: auto;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
     }
     ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); }
     li { border: 1px solid var(--outline); border-radius: var(--radius); padding: var(--space-3) var(--space-4); }
@@ -115,6 +116,7 @@
 
     <footer class="muted">
       <a href="https://github.com/getitdone-gmbh/runzero-mcp-starter">Source on GitHub</a> ·
+      <a href="https://dashboard.run-zero.de/?template=runzero-mcp-starter-d15c5da5">Deploy your own on run.zero</a> ·
       <a href="/healthz">Health</a>
     </footer>
   </main>

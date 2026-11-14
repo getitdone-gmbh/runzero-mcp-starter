@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP server starter</title>
+  <meta name="description" content="A remote MCP server over Streamable HTTP, built from the run.zero starter template.">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --surface: #ffffff;
+      --surface-container: #f4f4f5;
+      --on-surface: #18181b;
+      --on-surface-variant: #52525b;
+      --outline: #d4d4d8;
+      --primary: #18181b;
+      --on-primary: #ffffff;
+      --focus: #2563eb;
+      --radius: 12px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-12: 48px;
+      --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface: #09090b;
+        --surface-container: #18181b;
+        --on-surface: #fafafa;
+        --on-surface-variant: #a1a1aa;
+        --outline: #3f3f46;
+        --primary: #fafafa;
+        --on-primary: #09090b;
+        --focus: #60a5fa;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--on-surface);
+      font: 16px/1.5 var(--font-sans);
+    }
+    main { max-width: 720px; margin: 0 auto; padding: var(--space-12) var(--space-4); }
+    h1 { font-size: 32px; line-height: 1.2; margin: 0 0 var(--space-2); }
+    h2 { font-size: 18px; margin: var(--space-8) 0 var(--space-3); }
+    p { margin: 0 0 var(--space-4); }
+    .lead { color: var(--on-surface-variant); font-size: 18px; }
+    .muted { color: var(--on-surface-variant); }
+    code, pre { font-family: var(--font-mono); font-size: 14px; }
+    .field {
+      display: flex;
+      gap: var(--space-2);
+      align-items: center;
+      background: var(--surface-container);
+      border: 1px solid var(--outline);
+      border-radius: var(--radius);
+      padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+    }
+    .field code { flex: 1; overflow-x: auto; white-space: nowrap; }
+    button {
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      min-height: 40px;
+      padding: 0 var(--space-4);
+      border: 0;
+      border-radius: 8px;
+      background: var(--primary);
+      color: var(--on-primary);
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.88; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    pre {
+      margin: 0;
+      padding: var(--space-4);
+      background: var(--surface-container);
+      border: 1px solid var(--outline);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); }
+    li { border: 1px solid var(--outline); border-radius: var(--radius); padding: var(--space-3) var(--space-4); }
+    li strong { display: block; }
+    a { color: inherit; text-underline-offset: 3px; }
+    footer { margin-top: var(--space-12); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>MCP server starter</h1>
+    <p class="lead">A remote MCP server over Streamable HTTP, ready to deploy on run.zero.</p>
+
+    <h2>Endpoint</h2>
+    <div class="field">
+      <code id="endpoint">/mcp</code>
+      <button type="button" id="copy" aria-describedby="endpoint">Copy</button>
+    </div>
+    <p class="muted" id="copy-status" role="status" aria-live="polite"></p>
+
+    <h2>Connect</h2>
+    <pre><code id="connect">claude mcp add --transport http starter /mcp</code></pre>
+
+    <h2>Tools</h2>
+    <ul>
+      <li><strong>starter_text_stats</strong><span class="muted">Counts words and sentences of a text and estimates reading time.</span></li>
+      <li><strong>starter_current_time</strong><span class="muted">Returns the current time in any IANA time zone.</span></li>
+    </ul>
+
+    <footer class="muted">
+      <a href="https://github.com/getitdone-gmbh/runzero-mcp-starter">Source on GitHub</a> ·
+      <a href="/healthz">Health</a>
+    </footer>
+  </main>
+  <script>
+    const endpoint = `${location.origin}/mcp`;
+    document.getElementById("endpoint").textContent = endpoint;
+    document.getElementById("connect").textContent = `claude mcp add --transport http starter ${endpoint}`;
+    document.getElementById("copy").addEventListener("click", async () => {
+      const status = document.getElementById("copy-status");
+      try {
+        await navigator.clipboard.writeText(endpoint);
+        status.textContent = "Endpoint copied.";
+      } catch {
+        status.textContent = "Copy failed. Select the address and copy it by hand.";
+      }
+    });
+  </script>
+</body>
+</html>

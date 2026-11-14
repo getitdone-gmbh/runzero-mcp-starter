@@ -1,0 +1,8 @@
+version: "1"
+# "app" shows the app as a running service on the run.zero dashboard
+kind: app
+services:
+  mcp:
+    port: 8080
+    env:
+      NODE_ENV: production

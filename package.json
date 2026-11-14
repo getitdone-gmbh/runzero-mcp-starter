@@ -1,0 +1,36 @@
+{
+  "name": "runzero-mcp-starter",
+  "version": "1.0.0",
+  "description": "Starter template for a remote MCP server (Streamable HTTP, TypeScript) that deploys to run.zero",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getitdone-gmbh/runzero-mcp-starter.git"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.check.json",
+    "test": "tsx --test test/*.test.ts",
+    "inspect": "npx @modelcontextprotocol/inspector"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/express": "^2.0.2",
+    "@modelcontextprotocol/node": "^2.1.2",
+    "@modelcontextprotocol/server": "^2.4.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.20.5",
+    "express": "^5.3.0",
+    "typescript": "^5.9.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.4.0",
+    "tsx": "^4.23.15"
+  }
+}
